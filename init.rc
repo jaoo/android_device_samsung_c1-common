@@ -608,11 +608,11 @@ on property:persist.service.adb.enable=1
 on property:persist.service.adb.enable=0
     stop adbd
 
-service servicemanager /system/bin/servicemanager
-    user system
-    critical
-    onrestart restart zygote
-    onrestart restart media
+#service servicemanager /system/bin/servicemanager
+#    user system
+#    critical
+#    onrestart restart zygote
+#    onrestart restart media
 
 service vold /system/bin/vold
     socket vold stream 0660 root mount
@@ -629,12 +629,14 @@ service ril-daemon /system/bin/rild
     user root
     group radio cache inet misc audio sdcard_rw net_admin net_raw log 
 
-service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
-    socket zygote stream 666
-    onrestart write /sys/android_power/request_state wake
-    onrestart write /sys/power/state on
-    onrestart restart media
-    onrestart restart netd
+#service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
+#    socket zygote stream 666
+#    onrestart write /sys/android_power/request_state wake
+#    onrestart write /sys/power/state on
+#    onrestart restart media
+#    onrestart restart netd
+
+service b2g /system/b2g/b2g
 
 service media /system/bin/mediaserver
     user media
