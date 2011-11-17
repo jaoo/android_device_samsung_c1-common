@@ -624,8 +624,13 @@ service netd /system/bin/netd
 service debuggerd /system/bin/debuggerd
 
 service ril-daemon /system/bin/rild
-    socket rild stream 660 root radio
+    socket rild stream 666 root radio
     socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw net_admin net_raw log 
+
+service b2gdialer /system/bin/b2g-dialer-daemon
+    socket rilb2g stream 666 root system
     user root
     group radio cache inet misc audio sdcard_rw net_admin net_raw log 
 
